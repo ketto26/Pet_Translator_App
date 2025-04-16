@@ -16,15 +16,7 @@ struct ContentView: View {
     var body: some View {
         ZStack{
             // MARK: - Background
-            LinearGradient(
-                gradient: Gradient(colors: [
-                    Color(hex: "#F3F5F6"),
-                    Color(hex: "#C9FFE0")
-                ]),
-                startPoint: .top,
-                endPoint: .bottom
-            )
-            .ignoresSafeArea()
+            
             
             // MARK: - Main Content
             VStack {
@@ -150,37 +142,6 @@ struct ContentView: View {
                         .resizable()
                         .frame(width: 184, height: 184)
                 }
-                
-                
-                // MARK: - Bottom Navigation
-                ZStack{
-                    RoundedRectangle(cornerRadius: 16)
-                        .fill(.white)
-                        .frame(width: 216, height: 82)
-                    
-                    HStack{
-                        VStack{
-                            Image("messages")
-                                .resizable()
-                                .frame(width: 24, height: 24)
-                            
-                            Text("Translator")
-                                .font(.custom("Konkhmer Sleokchher", size: 12))
-                        }
-                        .padding(.trailing, 42)
-                        
-                        VStack{
-                            Image("Settings")
-                                .resizable()
-                                .frame(width: 24, height: 24)
-                            
-                            Text("Clicker")
-                                .font(.custom("Konkhmer Sleokchher", size: 12))
-                        }
-                    } // TODO: Add functionality to navigate pages
-                    
-                }
-                .padding(.top, 36)
                 
             }
             .foregroundColor(Color(hex: "#292D32"))
