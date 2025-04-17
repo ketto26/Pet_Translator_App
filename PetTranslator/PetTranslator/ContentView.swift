@@ -6,24 +6,27 @@
 //
 
 import SwiftUI
+import AVFoundation
 
 struct ContentView: View {
     // MARK: - State Properties
     @State private var isSwapped = false
     @State private var selectedPet: String? = "dog"
+    @State private var hasMicrophonePermission = false
+    @State private var showPermissionAlert = false
+    @State private var isRecording = false
+    @State private var audioRecorder: AVAudioRecorder?
     
     // MARK: - Body
     var body: some View {
         ZStack{
-            // MARK: - Background
-            
             
             // MARK: - Main Content
             VStack {
                 // MARK: - Title
                 Text("Translator")
                     .font(.custom("Konkhmer Sleokchher", size: 32))
-                    
+                
                 
                 // MARK: - Language Switcher
                 HStack(spacing: 20){
@@ -72,7 +75,7 @@ struct ContentView: View {
                         
                         
                         VStack(spacing: 24){
-                            Image("microphone")
+                            Image(isRecording ? "voice-active" : "microphone")
                                 .resizable()
                                 .frame(width: 70, height: 70)
                             
@@ -82,6 +85,26 @@ struct ContentView: View {
                     }
                     .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 4)
                     .frame(width: 178, height: 176)
+                    .onTapGesture {
+                        requestMicrophoneAccess { granted in
+                            if granted {
+                                hasMicrophonePermission = true
+                                toggleRecording()
+                            } else {
+                                showPermissionAlert = true
+                            }
+                        }
+                    }
+                    .alert("Microphone Access Denied", isPresented: $showPermissionAlert) {
+                        Button("Settings") {
+                            if let appSettings = URL(string: UIApplication.openSettingsURLString) {
+                                UIApplication.shared.open(appSettings)
+                            }
+                        }
+                        Button("Cancel", role: .cancel) { }
+                    } message: {
+                        Text("Please allow access to your mircophone to use the app’s features")
+                    }
                     
                     // MARK: - Pet Selector Card
                     ZStack{
@@ -149,6 +172,48 @@ struct ContentView: View {
             
         }
     }
+    
+    func requestMicrophoneAccess(completion: @escaping (Bool) -> Void) {
+        if #available(iOS 17, *) {
+            AVAudioApplication.requestRecordPermission { granted in
+                DispatchQueue.main.async {
+                    completion(granted)
+                }
+            }
+        } else {
+            AVAudioSession.sharedInstance().requestRecordPermission { granted in
+                DispatchQueue.main.async {
+                    completion(granted)
+                }
+            }
+        }
+    }
+    
+    
+    func toggleRecording() {
+        if isRecording {
+            // Stop recording
+            audioRecorder?.stop()
+            isRecording = false
+        } else {
+            let audioFilename = FileManager.default.temporaryDirectory.appendingPathComponent("recording.m4a")
+            let settings = [
+                AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
+                AVSampleRateKey: 12000,
+                AVNumberOfChannelsKey: 1,
+                AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
+            ]
+
+            do {
+                audioRecorder = try AVAudioRecorder(url: audioFilename, settings: settings)
+                audioRecorder?.record()
+                isRecording = true
+            } catch {
+                print("Failed to start recording:", error)
+            }
+        }
+    }
+
 }
 
 // MARK: - Preview
