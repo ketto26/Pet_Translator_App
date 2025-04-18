@@ -7,9 +7,12 @@
 
 import Foundation
 
+// MARK: - SettingsViewModel
+/// The ViewModel for managing settings-related data and actions in the SettingsView.
 final class SettingsViewModel: ObservableObject {
     
-    // Published to allow the view to react to changes
+    // MARK: - Published Properties
+    /// A list of settings items to display in the Settings view.
     @Published var items: [SettingsItem] = [
         SettingsItem(title: "Rate Us"),
         SettingsItem(title: "Share App"),
@@ -18,10 +21,5 @@ final class SettingsViewModel: ObservableObject {
         SettingsItem(title: "Privacy Policy"),
         SettingsItem(title: "Terms of Use")
     ]
-    
-    // Example of extra logic you could add later
-    func didSelectItem(_ item: SettingsItem) {
-        // Handle navigation, analytics, or actions
-        print("Selected \(item.title)")
-    }
 }
+
