@@ -7,27 +7,14 @@
 
 import SwiftUI
 
-// MARK: - SettingsView
-
-/// A view displaying a list of settings options, each leading to a detail page.
 struct SettingsView: View {
     
-    // MARK: - Properties
-        
-    /// The list of setting items to display
-    let items = [
-        "Rate Us",
-        "Share App",
-        "Contact Us",
-        "Restore Purchases",
-        "Privacy Policy",
-        "Terms os Use"
-    ]
+    // MARK: - ViewModel
+    @StateObject private var viewModel = SettingsViewModel()
     
-    // MARK: - Body
     var body: some View {
         NavigationView {
-            ZStack{
+            ZStack {
                 LinearGradient(
                     gradient: Gradient(colors: [
                         Color(hex: "#F3F5F6"),
@@ -38,28 +25,28 @@ struct SettingsView: View {
                 )
                 .ignoresSafeArea()
                 
-                // MARK: Content Stack
-                VStack{
+                VStack {
                     Text("Settings")
                         .font(.custom("Konkhmer Sleokchher", size: 32))
                     
-                    // MARK: Scrollable List
                     ScrollView {
                         VStack(spacing: 14) {
-                            ForEach(items, id: \.self) { item in
-                                NavigationLink(destination: DetailView(title: item)) {
-                                    HStack{
-                                        Text(item)
+                            ForEach(viewModel.items) { item in
+                                NavigationLink(
+                                    destination: DetailView(viewModel: DetailViewModel(title: item.title))
+                                ) {
+                                    HStack {
+                                        Text(item.title)
                                             .font(.custom("Konkhmer Sleokchher", size: 16))
                                             .foregroundColor(Color(hex: "#292D32"))
                                             .padding(.leading, 16)
+                                        
                                         Spacer()
                                         
                                         Image("navigationArrow")
                                             .resizable()
                                             .frame(width: 24, height: 24)
                                             .padding(.trailing, 16)
-                                        
                                     }
                                     .frame(maxWidth: .infinity)
                                     .frame(height: 50)
@@ -76,6 +63,7 @@ struct SettingsView: View {
         }
     }
 }
+
 
 #Preview {
     SettingsView()

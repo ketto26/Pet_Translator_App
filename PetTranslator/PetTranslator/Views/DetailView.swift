@@ -5,20 +5,17 @@
 //  Created by Keto Nioradze on 16.04.25.
 //
 
+// DetailView.swift
 import SwiftUI
 
-// MARK: - DetailView
-
-/// A simple detail screen that displays a title passed from the previous view.
+/// A detail screen using MVVM that displays a title passed via ViewModel.
 struct DetailView: View {
     
-    // MARK: - Properties
-    let title: String
+    // MARK: - ViewModel
+    @ObservedObject var viewModel: DetailViewModel
 
-    // MARK: - Body
     var body: some View {
-        ZStack{
-            
+        ZStack {
             LinearGradient(
                 gradient: Gradient(colors: [
                     Color(hex: "#F3F5F6"),
@@ -32,14 +29,13 @@ struct DetailView: View {
             VStack {
                 Spacer()
                 
-                // Display the passed title
-                Text(title)
+                Text(viewModel.title)
                     .font(.custom("Konkhmer Sleokchher", size: 50))
                     .padding()
+                
                 Spacer()
             }
             .foregroundColor(Color(hex: "#292D32"))
         }
     }
 }
-
