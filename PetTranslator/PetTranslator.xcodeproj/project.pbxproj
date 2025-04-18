@@ -16,6 +16,7 @@
 		0C82A0942DAEA4FC00864796 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C82A0932DAEA4FC00864796 /* ContentView.swift */; };
 		0C82A0962DAEA4FF00864796 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C82A0952DAEA4FF00864796 /* Assets.xcassets */; };
 		0C82A0992DAEA4FF00864796 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C82A0982DAEA4FF00864796 /* Preview Assets.xcassets */; };
+		0CD0209A2DB299C200EED20E /* ResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD020992DB299C200EED20E /* ResultsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		0C82A0932DAEA4FC00864796 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		0C82A0952DAEA4FF00864796 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0C82A0982DAEA4FF00864796 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		0CD020992DB299C200EED20E /* ResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				0C82A0912DAEA4FC00864796 /* PetTranslatorApp.swift */,
 				0C72DFE52DB00C300024FB26 /* MainTabView.swift */,
 				0C82A0932DAEA4FC00864796 /* ContentView.swift */,
+				0CD020992DB299C200EED20E /* ResultsView.swift */,
 				0C72DFE32DB002F40024FB26 /* SettingsView.swift */,
 				0C72DFE72DB0135A0024FB26 /* DetailView.swift */,
 				0C7F4FE42DAFDE020022A9AB /* ColourExtension.swift */,
@@ -159,6 +162,7 @@
 				0C72DFE82DB0135A0024FB26 /* DetailView.swift in Sources */,
 				0C72DFE42DB002F40024FB26 /* SettingsView.swift in Sources */,
 				0C7F4FE52DAFDE020022A9AB /* ColourExtension.swift in Sources */,
+				0CD0209A2DB299C200EED20E /* ResultsView.swift in Sources */,
 				0C82A0922DAEA4FC00864796 /* PetTranslatorApp.swift in Sources */,
 				0C72DFE62DB00C300024FB26 /* MainTabView.swift in Sources */,
 			);
