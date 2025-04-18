@@ -7,8 +7,18 @@
 
 import Foundation
 
+// MARK: - PetTranslatorModel
+/// A model to provide random translated messages for pets (dog or cat).
 struct PetTranslatorModel {
+    
+    // MARK: - Static Methods
+    /// Generates a random message based on the selected pet.
+    /// - Parameter pet: A string representing the selected pet type ("dog" or "cat").
+    /// - Returns: A random message for the selected pet or a default message if no messages are available.
     static func getRandomMessage(for pet: String) -> String {
+        
+        // MARK: - Dog Messages
+        /// A list of predefined messages for dogs.
         let dogMessages = [
             "I’m hungry, feed me!",
             "What are you doing, human?",
@@ -24,6 +34,8 @@ struct PetTranslatorModel {
             "You smell like love and peanut butter."
         ]
         
+        // MARK: - Cat Messages
+        /// A list of predefined messages for cats.
         let catMessages = [
             "I’m hungry, feed me!",
             "What are you doing, human?",
@@ -36,7 +48,10 @@ struct PetTranslatorModel {
             "Your laptop is warm. I claim it."
         ]
         
+        // MARK: - Return Random Message
+        /// Selects a random message based on the pet type.
         return (pet == "dog" ? dogMessages : catMessages).randomElement() ?? "Processing..."
     }
 }
+
 

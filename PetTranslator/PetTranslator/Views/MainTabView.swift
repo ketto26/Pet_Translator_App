@@ -8,16 +8,13 @@
 import SwiftUI
 
 // MARK: - Tab Enumeration
-
 /// Enum to represent the selected tab in the custom tab bar
 enum Tab {
     case main
     case settings
 }
 
-
 // MARK: - MainTabView
-
 /// Main view that handles tab navigation and custom tab bar
 struct MainTabView: View {
     // MARK: - State
@@ -99,7 +96,8 @@ struct MainTabView: View {
     }
 }
 
-
+// MARK: - Preview
+/// Preview for the MainTabView.
 #Preview {
     MainTabView()
 }
