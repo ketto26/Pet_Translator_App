@@ -27,3 +27,10 @@ The user interface is crafted with **SwiftUI**, ensuring a smooth and responsive
 - iOS 14.0 or later
 - Swift 5.0+
 - Xcode 12.0+
+
+### Demo Video
+
+Check out the demo video of the application:
+
+[![Watch the video](https://img.youtube.com/vi/your-video-id/maxresdefault.jpg)](https://youtube.com/shorts/X98ObKbhAu0?si=q-BXS60E3JFZ7WQw)
+
